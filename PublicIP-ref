@@ -1,0 +1,73 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET publicIPAddresses
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'publicIPAddresses'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE publicIPAddresses
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'publicIPAddresses'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          sku:
+            name: (String)
+          properties:
+            publicIPAllocationMethod: (String)
+            publicIPAddressVersion: (String)
+            ipConfiguration:
+              id: (String)
+              properties:
+                privateIPAddress: (String)
+                privateIPAllocationMethod: (String)
+                subnet:
+                  id:
+                  properties:
+                  name:
+                  etag:
+                publicIPAddress:
+                  id:
+                  name:
+                  type:
+                  location:
+                  tags:
+                  sku:
+                  properties:
+                  etag:
+                  zones:
+                provisioningState: (String)
+              name: (String)
+              etag: (String)
+            dnsSettings:
+              domainNameLabel: (String)
+              fqdn: (String)
+              reverseFqdn: (String)
+            ipTags:
+              - ipTagType: (String)
+                tag: (String)
+            ipAddress: (String)
+            publicIPPrefix:
+              id: (String)
+            idleTimeoutInMinutes: (Integer)
+            resourceGuid: (String)
+            provisioningState: (String)
+          etag: (String)
+          zones:
+            - (String)
+
+
