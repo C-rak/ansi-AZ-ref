@@ -1,0 +1,55 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET routeTables
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'routeTables'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE routeTables
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'routeTables'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            routes:
+              - id: (String)
+                properties:
+                  addressPrefix:
+                  nextHopType:
+                  nextHopIpAddress:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            subnets:
+              - id: (String)
+                properties:
+                  addressPrefix:
+                  networkSecurityGroup:
+                  routeTable:
+                  serviceEndpoints:
+                  serviceEndpointPolicies:
+                  ipConfigurations:
+                  resourceNavigationLinks:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            disableBgpRoutePropagation: (Boolean)
+            provisioningState: (String)
+          etag: (String)
+
+
