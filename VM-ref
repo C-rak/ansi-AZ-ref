@@ -1,0 +1,182 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET virtualMachines
+      azure_rm_resource_facts:
+        api_version: '2018-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Compute'
+        resource_type: 'virtualMachines'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE virtualMachines
+      azure_rm_resource:
+        api_version: '2018-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Compute'
+        resource_type: 'virtualMachines'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          plan:
+            name: (String)
+            publisher: (String)
+            product: (String)
+            promotionCode: (String)
+          properties:
+            hardwareProfile:
+              vmSize: (String)
+            storageProfile:
+              imageReference:
+                id: (String)
+                publisher: (String)
+                offer: (String)
+                sku: (String)
+                version: (String)
+              osDisk:
+                osType: (String)
+                encryptionSettings:
+                  diskEncryptionKey:
+                  keyEncryptionKey:
+                  enabled:
+                name: (String)
+                vhd:
+                  uri:
+                image:
+                  uri:
+                caching: (String)
+                writeAcceleratorEnabled: (Boolean)
+                diffDiskSettings:
+                  option:
+                createOption: (String)
+                diskSizeGB: (Integer)
+                managedDisk:
+                  id:
+                  storageAccountType:
+              dataDisks:
+                - lun:
+                  name:
+                  vhd:
+                  image:
+                  caching:
+                  writeAcceleratorEnabled:
+                  createOption:
+                  diskSizeGB:
+                  managedDisk:
+            additionalCapabilities:
+              ultraSSDEnabled: (Boolean)
+            osProfile:
+              computerName: (String)
+              adminUsername: (String)
+              adminPassword: (String)
+              customData: (String)
+              windowsConfiguration:
+                provisionVMAgent: (Boolean)
+                enableAutomaticUpdates: (Boolean)
+                timeZone: (String)
+                additionalUnattendContent:
+                winRM:
+                  listeners:
+              linuxConfiguration:
+                disablePasswordAuthentication: (Boolean)
+                ssh:
+                  publicKeys:
+                provisionVMAgent: (Boolean)
+              secrets:
+                - sourceVault:
+                  vaultCertificates:
+              allowExtensionOperations: (Boolean)
+            networkProfile:
+              networkInterfaces:
+                - id:
+                  properties:
+            diagnosticsProfile:
+              bootDiagnostics:
+                enabled: (Boolean)
+                storageUri: (String)
+            availabilitySet:
+              id: (String)
+            provisioningState: (String)
+            instanceView:
+              platformUpdateDomain: (Integer)
+              platformFaultDomain: (Integer)
+              computerName: (String)
+              osName: (String)
+              osVersion: (String)
+              rdpThumbPrint: (String)
+              vmAgent:
+                vmAgentVersion: (String)
+                extensionHandlers:
+                statuses:
+              maintenanceRedeployStatus:
+                isCustomerInitiatedMaintenanceAllowed: (Boolean)
+                preMaintenanceWindowStartTime: (String)
+                preMaintenanceWindowEndTime: (String)
+                maintenanceWindowStartTime: (String)
+                maintenanceWindowEndTime: (String)
+                lastOperationResultCode: (String)
+                lastOperationMessage: (String)
+              disks:
+                - name:
+                  encryptionSettings:
+                  statuses:
+              extensions:
+                - name:
+                  type:
+                  typeHandlerVersion:
+                  substatuses:
+                  statuses:
+              bootDiagnostics:
+                consoleScreenshotBlobUri: (String)
+                serialConsoleLogBlobUri: (String)
+                status:
+                  code:
+                  level:
+                  displayStatus:
+                  message:
+                  time:
+              statuses:
+                - code:
+                  level:
+                  displayStatus:
+                  message:
+                  time:
+            licenseType: (String)
+            vmId: (String)
+          resources:
+            - id: (String)
+              name: (String)
+              type: (String)
+              location: (String)
+              tags:
+              properties:
+                forceUpdateTag: (String)
+                publisher: (String)
+                type: (String)
+                typeHandlerVersion: (String)
+                autoUpgradeMinorVersion: (Boolean)
+                settings:
+                protectedSettings:
+                provisioningState: (String)
+                instanceView:
+                  name:
+                  type:
+                  typeHandlerVersion:
+                  substatuses:
+                  statuses:
+          identity:
+            principalId: (String)
+            tenantId: (String)
+            type: (String)
+            userAssignedIdentities:
+          zones:
+            - (String)
+
+
