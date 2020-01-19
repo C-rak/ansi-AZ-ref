@@ -1,0 +1,37 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET virtualWans
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'virtualWans'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE virtualWans
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'virtualWans'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            disableVpnEncryption: (Boolean)
+            virtualHubs:
+              - id: (String)
+            vpnSites:
+              - id: (String)
+            provisioningState: (String)
+          etag: (String)
+
+
