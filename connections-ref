@@ -1,0 +1,143 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET connections
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'connections'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE connections
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'connections'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            authorizationKey: (String)
+            virtualNetworkGateway1:
+              id: (String)
+              name: (String)
+              type: (String)
+              location: (String)
+              tags:
+              properties:
+                ipConfigurations:
+                gatewayType: (String)
+                vpnType: (String)
+                enableBgp: (Boolean)
+                activeActive: (Boolean)
+                gatewayDefaultSite:
+                  id:
+                sku:
+                  name:
+                  tier:
+                  capacity:
+                vpnClientConfiguration:
+                  vpnClientAddressPool:
+                  vpnClientRootCertificates:
+                  vpnClientRevokedCertificates:
+                  vpnClientProtocols:
+                  vpnClientIpsecPolicies:
+                  radiusServerAddress:
+                  radiusServerSecret:
+                bgpSettings:
+                  asn:
+                  bgpPeeringAddress:
+                  peerWeight:
+                resourceGuid: (String)
+                provisioningState: (String)
+              etag: (String)
+            virtualNetworkGateway2:
+              id: (String)
+              name: (String)
+              type: (String)
+              location: (String)
+              tags:
+              properties:
+                ipConfigurations:
+                gatewayType: (String)
+                vpnType: (String)
+                enableBgp: (Boolean)
+                activeActive: (Boolean)
+                gatewayDefaultSite:
+                  id:
+                sku:
+                  name:
+                  tier:
+                  capacity:
+                vpnClientConfiguration:
+                  vpnClientAddressPool:
+                  vpnClientRootCertificates:
+                  vpnClientRevokedCertificates:
+                  vpnClientProtocols:
+                  vpnClientIpsecPolicies:
+                  radiusServerAddress:
+                  radiusServerSecret:
+                bgpSettings:
+                  asn:
+                  bgpPeeringAddress:
+                  peerWeight:
+                resourceGuid: (String)
+                provisioningState: (String)
+              etag: (String)
+            localNetworkGateway2:
+              id: (String)
+              name: (String)
+              type: (String)
+              location: (String)
+              tags:
+              properties:
+                localNetworkAddressSpace:
+                  addressPrefixes:
+                gatewayIpAddress: (String)
+                bgpSettings:
+                  asn:
+                  bgpPeeringAddress:
+                  peerWeight:
+                resourceGuid: (String)
+                provisioningState: (String)
+              etag: (String)
+            connectionType: (String)
+            routingWeight: (Integer)
+            sharedKey: (String)
+            connectionStatus: (String)
+            tunnelConnectionStatus:
+              - tunnel: (String)
+                connectionStatus: (String)
+                ingressBytesTransferred: (Integer)
+                egressBytesTransferred: (Integer)
+                lastConnectionEstablishedUtcTime: (String)
+            egressBytesTransferred: (Integer)
+            ingressBytesTransferred: (Integer)
+            peer:
+              id: (String)
+            enableBgp: (Boolean)
+            usePolicyBasedTrafficSelectors: (Boolean)
+            ipsecPolicies:
+              - saLifeTimeSeconds: (Integer)
+                saDataSizeKilobytes: (Integer)
+                ipsecEncryption: (String)
+                ipsecIntegrity: (String)
+                ikeEncryption: (String)
+                ikeIntegrity: (String)
+                dhGroup: (String)
+                pfsGroup: (String)
+            resourceGuid: (String)
+            provisioningState: (String)
+            expressRouteGatewayBypass: (Boolean)
+          etag: (String)
+
+
