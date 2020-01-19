@@ -76,5 +76,189 @@
               defaultAction: (String)
             accessTier: (String)
             supportsHttpsTrafficOnly: (Boolean)
+            
+            ---------------------------------------------------------------------------------------------------------------------------
+            # Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET samplergdiag993
+      azure_rm_resource_facts:
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+        resource_name: 'samplergdiag993'
+
+
+- hosts: localhost
+  tasks:
+    - name: SET samplergdiag993
+      azure_rm_resource:
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+        resource_name: 'samplergdiag993'
+        body:
+          sku:
+            name: (String)
+            tier: (String)
+            resourceType: (String)
+            kind: (String)
+            locations:
+              - (String)
+            capabilities:
+              - name: (String)
+                value: (String)
+            restrictions:
+              - type: (String)
+                values:
+                reasonCode: (String)
+          kind: (String)
+          location: (String)
+          tags:
+          identity:
+            principalId: (String)
+            tenantId: (String)
+            type: (String)
+          properties:
+            customDomain:
+              name: (String)
+              useSubDomain: (Boolean)
+            encryption:
+              services:
+                blob:
+                  enabled:
+                  lastEnabledTime:
+                file:
+                  enabled:
+                  lastEnabledTime:
+                table:
+                  enabled:
+                  lastEnabledTime:
+                queue:
+                  enabled:
+                  lastEnabledTime:
+              keySource: (String)
+              keyvaultproperties:
+                keyname: (String)
+                keyversion: (String)
+                keyvaulturi: (String)
+            networkAcls:
+              bypass: (String)
+              virtualNetworkRules:
+                - id:
+                  action:
+                  state:
+              ipRules:
+                - value:
+                  action:
+              defaultAction: (String)
+            accessTier: (String)
+            supportsHttpsTrafficOnly: (Boolean)
+
+
+- hosts: localhost
+  tasks:
+    - name: DELETE samplergdiag993
+      azure_rm_resource:
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+        resource_name: 'samplergdiag993'
+        subresource:
+          - type: samplergdiag993
+        state: absent
+
+
+- hosts: localhost
+  tasks:
+    - name: Action ListAccountSas
+      azure_rm_resource:
+        method: POST
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+        resource_name: 'samplergdiag993'
+        subresource:
+          - type: ListAccountSas
+        body:
+          signedServices: (String)
+          signedResourceTypes: (String)
+          signedPermission: (String)
+          signedIp: (String)
+          signedProtocol: (String)
+          signedStart: (String)
+          signedExpiry: (String)
+          keyToSign: (String)
+
+
+- hosts: localhost
+  tasks:
+    - name: Action ListServiceSas
+      azure_rm_resource:
+        method: POST
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+        resource_name: 'samplergdiag993'
+        subresource:
+          - type: ListServiceSas
+        body:
+          canonicalizedResource: (String)
+          signedResource: (String)
+          signedPermission: (String)
+          signedIp: (String)
+          signedProtocol: (String)
+          signedStart: (String)
+          signedExpiry: (String)
+          signedIdentifier: (String)
+          startPk: (String)
+          endPk: (String)
+          startRk: (String)
+          endRk: (String)
+          keyToSign: (String)
+          rscc: (String)
+          rscd: (String)
+          rsce: (String)
+          rscl: (String)
+          rsct: (String)
+
+
+- hosts: localhost
+  tasks:
+    - name: Action listKeys
+      azure_rm_resource:
+        method: POST
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+        resource_name: 'samplergdiag993'
+        subresource:
+          - type: listKeys
+
+
+- hosts: localhost
+  tasks:
+    - name: Action regenerateKey
+      azure_rm_resource:
+        method: POST
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+        resource_name: 'samplergdiag993'
+        subresource:
+          - type: regenerateKey
+        body:
+          keyName: (String)
+
+
+
 
 
