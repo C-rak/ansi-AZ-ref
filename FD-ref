@@ -1,0 +1,89 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET frontDoors
+      azure_rm_resource_facts:
+        api_version: '2018-08-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'frontDoors'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE frontDoors
+      azure_rm_resource:
+        api_version: '2018-08-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'frontDoors'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            friendlyName: (String)
+            routingRules:
+              - id: (String)
+                properties:
+                  frontendEndpoints:
+                  acceptedProtocols:
+                  patternsToMatch:
+                  customForwardingPath:
+                  forwardingProtocol:
+                  cacheConfiguration:
+                  backendPool:
+                  enabledState:
+                  resourceState:
+                name: (String)
+                type: (String)
+            loadBalancingSettings:
+              - id: (String)
+                properties:
+                  sampleSize:
+                  successfulSamplesRequired:
+                  additionalLatencyMilliseconds:
+                  resourceState:
+                name: (String)
+                type: (String)
+            healthProbeSettings:
+              - id: (String)
+                properties:
+                  path:
+                  protocol:
+                  intervalInSeconds:
+                  resourceState:
+                name: (String)
+                type: (String)
+            backendPools:
+              - id: (String)
+                properties:
+                  backends:
+                  loadBalancingSettings:
+                  healthProbeSettings:
+                  resourceState:
+                name: (String)
+                type: (String)
+            frontendEndpoints:
+              - id: (String)
+                properties:
+                  hostName:
+                  sessionAffinityEnabledState:
+                  sessionAffinityTtlSeconds:
+                  webApplicationFirewallPolicyLink:
+                  resourceState:
+                  customHttpsProvisioningState:
+                  customHttpsProvisioningSubstate:
+                  customHttpsConfiguration:
+                name: (String)
+                type: (String)
+            enabledState: (String)
+            resourceState: (String)
+            provisioningState: (String)
+            cname: (String)
+
+
