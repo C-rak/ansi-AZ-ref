@@ -1,0 +1,82 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET virtualNetworkGateways
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'virtualNetworkGateways'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE virtualNetworkGateways
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'virtualNetworkGateways'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            ipConfigurations:
+              - id: (String)
+                properties:
+                  privateIPAllocationMethod:
+                  subnet:
+                  publicIPAddress:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            gatewayType: (String)
+            vpnType: (String)
+            enableBgp: (Boolean)
+            activeActive: (Boolean)
+            gatewayDefaultSite:
+              id: (String)
+            sku:
+              name: (String)
+              tier: (String)
+              capacity: (Integer)
+            vpnClientConfiguration:
+              vpnClientAddressPool:
+                addressPrefixes:
+              vpnClientRootCertificates:
+                - id:
+                  properties:
+                  name:
+                  etag:
+              vpnClientRevokedCertificates:
+                - id:
+                  properties:
+                  name:
+                  etag:
+              vpnClientProtocols:
+                - (String)
+              vpnClientIpsecPolicies:
+                - saLifeTimeSeconds:
+                  saDataSizeKilobytes:
+                  ipsecEncryption:
+                  ipsecIntegrity:
+                  ikeEncryption:
+                  ikeIntegrity:
+                  dhGroup:
+                  pfsGroup:
+              radiusServerAddress: (String)
+              radiusServerSecret: (String)
+            bgpSettings:
+              asn: (Integer)
+              bgpPeeringAddress: (String)
+              peerWeight: (Integer)
+            resourceGuid: (String)
+            provisioningState: (String)
+          etag: (String)
+
+
