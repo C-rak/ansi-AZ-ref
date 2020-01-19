@@ -1,0 +1,47 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET virtualHubs
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'virtualHubs'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE virtualHubs
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'virtualHubs'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            virtualWan:
+              id: (String)
+            hubVirtualNetworkConnections:
+              - id: (String)
+                name: (String)
+                type: (String)
+                location: (String)
+                tags:
+                properties:
+                  remoteVirtualNetwork:
+                  allowHubToRemoteVnetTransit:
+                  allowRemoteVnetToUseHubVnetGateways:
+                  provisioningState:
+                etag: (String)
+            addressPrefix: (String)
+            provisioningState: (String)
+          etag: (String)
+
+
