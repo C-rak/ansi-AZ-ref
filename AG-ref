@@ -1,0 +1,204 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET applicationGateways
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'applicationGateways'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE applicationGateways
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'applicationGateways'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            sku:
+              name: (String)
+              tier: (String)
+              capacity: (Integer)
+            sslPolicy:
+              disabledSslProtocols:
+                - (String)
+              policyType: (String)
+              policyName: (String)
+              cipherSuites:
+                - (String)
+              minProtocolVersion: (String)
+            operationalState: (String)
+            gatewayIPConfigurations:
+              - id: (String)
+                properties:
+                  subnet:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            authenticationCertificates:
+              - id: (String)
+                properties:
+                  data:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            sslCertificates:
+              - id: (String)
+                properties:
+                  data:
+                  password:
+                  publicCertData:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            frontendIPConfigurations:
+              - id: (String)
+                properties:
+                  privateIPAddress:
+                  privateIPAllocationMethod:
+                  subnet:
+                  publicIPAddress:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            frontendPorts:
+              - id: (String)
+                properties:
+                  port:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            probes:
+              - id: (String)
+                properties:
+                  protocol:
+                  host:
+                  path:
+                  interval:
+                  timeout:
+                  unhealthyThreshold:
+                  pickHostNameFromBackendHttpSettings:
+                  minServers:
+                  match:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            backendAddressPools:
+              - id: (String)
+                properties:
+                  backendIPConfigurations:
+                  backendAddresses:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            backendHttpSettingsCollection:
+              - id: (String)
+                properties:
+                  port:
+                  protocol:
+                  cookieBasedAffinity:
+                  requestTimeout:
+                  probe:
+                  authenticationCertificates:
+                  connectionDraining:
+                  hostName:
+                  pickHostNameFromBackendAddress:
+                  affinityCookieName:
+                  probeEnabled:
+                  path:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            httpListeners:
+              - id: (String)
+                properties:
+                  frontendIPConfiguration:
+                  frontendPort:
+                  protocol:
+                  hostName:
+                  sslCertificate:
+                  requireServerNameIndication:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            urlPathMaps:
+              - id: (String)
+                properties:
+                  defaultBackendAddressPool:
+                  defaultBackendHttpSettings:
+                  defaultRedirectConfiguration:
+                  pathRules:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            requestRoutingRules:
+              - id: (String)
+                properties:
+                  ruleType:
+                  backendAddressPool:
+                  backendHttpSettings:
+                  httpListener:
+                  urlPathMap:
+                  redirectConfiguration:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                type: (String)
+            redirectConfigurations:
+              - id: (String)
+                properties:
+                  redirectType:
+                  targetListener:
+                  targetUrl:
+                  includePath:
+                  includeQueryString:
+                  requestRoutingRules:
+                  urlPathMaps:
+                  pathRules:
+                name: (String)
+                etag: (String)
+                type: (String)
+            webApplicationFirewallConfiguration:
+              enabled: (Boolean)
+              firewallMode: (String)
+              ruleSetType: (String)
+              ruleSetVersion: (String)
+              disabledRuleGroups:
+                - ruleGroupName:
+                  rules:
+              requestBodyCheck: (Boolean)
+              maxRequestBodySize: (Integer)
+            enableHttp2: (Boolean)
+            enableFips: (Boolean)
+            autoscaleConfiguration:
+              bounds:
+                min: (Integer)
+                max: (Integer)
+            resourceGuid: (String)
+            provisioningState: (String)
+          etag: (String)
+          zones:
+            - (String)
+
+
