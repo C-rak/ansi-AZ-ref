@@ -1,0 +1,60 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET azureFirewalls
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'azureFirewalls'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE azureFirewalls
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'azureFirewalls'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            applicationRuleCollections:
+              - id: (String)
+                properties:
+                  priority:
+                  action:
+                  rules:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            networkRuleCollections:
+              - id: (String)
+                properties:
+                  priority:
+                  action:
+                  rules:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            ipConfigurations:
+              - id: (String)
+                properties:
+                  privateIPAddress:
+                  subnet:
+                  internalPublicIpAddress:
+                  publicIPAddress:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            provisioningState: (String)
+          etag: (String)
+
+
