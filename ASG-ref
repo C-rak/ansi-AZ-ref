@@ -1,0 +1,33 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET applicationSecurityGroups
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'applicationSecurityGroups'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE applicationSecurityGroups
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'applicationSecurityGroups'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            resourceGuid: (String)
+            provisioningState: (String)
+          etag: (String)
+
+
