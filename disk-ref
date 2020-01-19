@@ -1,0 +1,58 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET disks
+      azure_rm_resource_facts:
+        api_version: '2017-03-30'
+        resource_group: 'sampleRG'
+        provider: 'Compute'
+        resource_type: 'disks'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE disks
+      azure_rm_resource:
+        api_version: '2017-03-30'
+        resource_group: 'sampleRG'
+        provider: 'Compute'
+        resource_type: 'disks'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          managedBy: (String)
+          sku:
+            name: (String)
+            tier: (String)
+          properties:
+            timeCreated: (String)
+            osType: (String)
+            creationData:
+              createOption: (String)
+              storageAccountId: (String)
+              imageReference:
+                id: (String)
+                lun: (Integer)
+              sourceUri: (String)
+              sourceResourceId: (String)
+            diskSizeGB: (Integer)
+            encryptionSettings:
+              enabled: (Boolean)
+              diskEncryptionKey:
+                sourceVault:
+                  id:
+                secretUrl: (String)
+              keyEncryptionKey:
+                sourceVault:
+                  id:
+                keyUrl: (String)
+            provisioningState: (String)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
