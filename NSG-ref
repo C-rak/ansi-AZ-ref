@@ -1,0 +1,106 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET networkSecurityGroups
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'networkSecurityGroups'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE networkSecurityGroups
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'networkSecurityGroups'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            securityRules:
+              - id: (String)
+                properties:
+                  description:
+                  protocol:
+                  sourcePortRange:
+                  destinationPortRange:
+                  sourceAddressPrefix:
+                  sourceAddressPrefixes:
+                  sourceApplicationSecurityGroups:
+                  destinationAddressPrefix:
+                  destinationAddressPrefixes:
+                  destinationApplicationSecurityGroups:
+                  sourcePortRanges:
+                  destinationPortRanges:
+                  access:
+                  priority:
+                  direction:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            defaultSecurityRules:
+              - id: (String)
+                properties:
+                  description:
+                  protocol:
+                  sourcePortRange:
+                  destinationPortRange:
+                  sourceAddressPrefix:
+                  sourceAddressPrefixes:
+                  sourceApplicationSecurityGroups:
+                  destinationAddressPrefix:
+                  destinationAddressPrefixes:
+                  destinationApplicationSecurityGroups:
+                  sourcePortRanges:
+                  destinationPortRanges:
+                  access:
+                  priority:
+                  direction:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            networkInterfaces:
+              - id: (String)
+                name: (String)
+                type: (String)
+                location: (String)
+                tags:
+                properties:
+                  virtualMachine:
+                  networkSecurityGroup:
+                  ipConfigurations:
+                  dnsSettings:
+                  macAddress:
+                  primary:
+                  enableAcceleratedNetworking:
+                  enableIPForwarding:
+                  resourceGuid:
+                  provisioningState:
+                etag: (String)
+            subnets:
+              - id: (String)
+                properties:
+                  addressPrefix:
+                  networkSecurityGroup:
+                  routeTable:
+                  serviceEndpoints:
+                  serviceEndpointPolicies:
+                  ipConfigurations:
+                  resourceNavigationLinks:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            resourceGuid: (String)
+            provisioningState: (String)
+          etag: (String)
+
+
