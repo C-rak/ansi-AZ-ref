@@ -1,0 +1,129 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET loadBalancers
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'loadBalancers'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE loadBalancers
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'loadBalancers'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          sku:
+            name: (String)
+          properties:
+            frontendIPConfigurations:
+              - id: (String)
+                properties:
+                  inboundNatRules:
+                  inboundNatPools:
+                  outboundRules:
+                  loadBalancingRules:
+                  privateIPAddress:
+                  privateIPAllocationMethod:
+                  subnet:
+                  publicIPAddress:
+                  publicIPPrefix:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+                zones:
+            backendAddressPools:
+              - id: (String)
+                properties:
+                  backendIPConfigurations:
+                  loadBalancingRules:
+                  outboundRule:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            loadBalancingRules:
+              - id: (String)
+                properties:
+                  frontendIPConfiguration:
+                  backendAddressPool:
+                  probe:
+                  protocol:
+                  loadDistribution:
+                  frontendPort:
+                  backendPort:
+                  idleTimeoutInMinutes:
+                  enableFloatingIP:
+                  enableTcpReset:
+                  disableOutboundSnat:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            probes:
+              - id: (String)
+                properties:
+                  loadBalancingRules:
+                  protocol:
+                  port:
+                  intervalInSeconds:
+                  numberOfProbes:
+                  requestPath:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            inboundNatRules:
+              - id: (String)
+                properties:
+                  frontendIPConfiguration:
+                  backendIPConfiguration:
+                  protocol:
+                  frontendPort:
+                  backendPort:
+                  idleTimeoutInMinutes:
+                  enableFloatingIP:
+                  enableTcpReset:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            inboundNatPools:
+              - id: (String)
+                properties:
+                  frontendIPConfiguration:
+                  protocol:
+                  frontendPortRangeStart:
+                  frontendPortRangeEnd:
+                  backendPort:
+                  idleTimeoutInMinutes:
+                  enableFloatingIP:
+                  enableTcpReset:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            outboundRules:
+              - id: (String)
+                properties:
+                  allocatedOutboundPorts:
+                  frontendIPConfigurations:
+                  backendAddressPool:
+                  provisioningState:
+                  protocol:
+                  enableTcpReset:
+                  idleTimeoutInMinutes:
+                name: (String)
+                etag: (String)
+            resourceGuid: (String)
+            provisioningState: (String)
+          etag: (String)
+
+
