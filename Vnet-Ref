@@ -1,0 +1,69 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET virtualNetworks
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'virtualNetworks'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE virtualNetworks
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'virtualNetworks'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            addressSpace:
+              addressPrefixes:
+                - (String)
+            dhcpOptions:
+              dnsServers:
+                - (String)
+            subnets:
+              - id: (String)
+                properties:
+                  addressPrefix:
+                  networkSecurityGroup:
+                  routeTable:
+                  serviceEndpoints:
+                  serviceEndpointPolicies:
+                  ipConfigurations:
+                  resourceNavigationLinks:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            virtualNetworkPeerings:
+              - id: (String)
+                properties:
+                  allowVirtualNetworkAccess:
+                  allowForwardedTraffic:
+                  allowGatewayTransit:
+                  useRemoteGateways:
+                  remoteVirtualNetwork:
+                  remoteAddressSpace:
+                  peeringState:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            resourceGuid: (String)
+            provisioningState: (String)
+            enableDdosProtection: (Boolean)
+            enableVmProtection: (Boolean)
+            ddosProtectionPlan:
+              id: (String)
+          etag: (String)
+
+
