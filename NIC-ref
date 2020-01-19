@@ -1,0 +1,77 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET networkInterfaces
+      azure_rm_resource_facts:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'networkInterfaces'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE networkInterfaces
+      azure_rm_resource:
+        api_version: '2018-07-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'networkInterfaces'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          properties:
+            virtualMachine:
+              id: (String)
+            networkSecurityGroup:
+              id: (String)
+              name: (String)
+              type: (String)
+              location: (String)
+              tags:
+              properties:
+                securityRules:
+                defaultSecurityRules:
+                networkInterfaces:
+                subnets:
+                resourceGuid: (String)
+                provisioningState: (String)
+              etag: (String)
+            ipConfigurations:
+              - id: (String)
+                properties:
+                  applicationGatewayBackendAddressPools:
+                  loadBalancerBackendAddressPools:
+                  loadBalancerInboundNatRules:
+                  privateIPAddress:
+                  privateIPAllocationMethod:
+                  privateIPAddressVersion:
+                  subnet:
+                  primary:
+                  publicIPAddress:
+                  applicationSecurityGroups:
+                  provisioningState:
+                name: (String)
+                etag: (String)
+            dnsSettings:
+              dnsServers:
+                - (String)
+              appliedDnsServers:
+                - (String)
+              internalDnsNameLabel: (String)
+              internalFqdn: (String)
+              internalDomainNameSuffix: (String)
+            macAddress: (String)
+            primary: (Boolean)
+            enableAcceleratedNetworking: (Boolean)
+            enableIPForwarding: (Boolean)
+            resourceGuid: (String)
+            provisioningState: (String)
+          etag: (String)
+
+
