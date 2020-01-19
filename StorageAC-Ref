@@ -1,0 +1,80 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET storageAccounts
+      azure_rm_resource_facts:
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE storageAccounts
+      azure_rm_resource:
+        api_version: '2017-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Storage'
+        resource_type: 'storageAccounts'
+        resource_name: '{{ name }}'
+        body:
+          sku:
+            name: (String)
+            tier: (String)
+            resourceType: (String)
+            kind: (String)
+            locations:
+              - (String)
+            capabilities:
+              - name: (String)
+                value: (String)
+            restrictions:
+              - type: (String)
+                values:
+                reasonCode: (String)
+          kind: (String)
+          location: (String)
+          tags:
+          identity:
+            principalId: (String)
+            tenantId: (String)
+            type: (String)
+          properties:
+            customDomain:
+              name: (String)
+              useSubDomain: (Boolean)
+            encryption:
+              services:
+                blob:
+                  enabled:
+                  lastEnabledTime:
+                file:
+                  enabled:
+                  lastEnabledTime:
+                table:
+                  enabled:
+                  lastEnabledTime:
+                queue:
+                  enabled:
+                  lastEnabledTime:
+              keySource: (String)
+              keyvaultproperties:
+                keyname: (String)
+                keyversion: (String)
+                keyvaulturi: (String)
+            networkAcls:
+              bypass: (String)
+              virtualNetworkRules:
+                - id:
+                  action:
+                  state:
+              ipRules:
+                - value:
+                  action:
+              defaultAction: (String)
+            accessTier: (String)
+            supportsHttpsTrafficOnly: (Boolean)
+
+
