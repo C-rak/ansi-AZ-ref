@@ -1,0 +1,23 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET trafficmanagerprofiles
+      azure_rm_resource_facts:
+        api_version: '2018-02-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'trafficmanagerprofiles'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE trafficmanagerprofiles
+      azure_rm_resource:
+        api_version: '2018-02-01'
+        resource_group: 'sampleRG'
+        provider: 'Network'
+        resource_type: 'trafficmanagerprofiles'
+        resource_name: '{{ name }}'
+
+
