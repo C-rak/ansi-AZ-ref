@@ -1,0 +1,113 @@
+# Ansible Playbooks
+
+- hosts: localhost
+  tasks:
+    - name: GET virtualMachineScaleSets
+      azure_rm_resource_facts:
+        api_version: '2018-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Compute'
+        resource_type: 'virtualMachineScaleSets'
+
+
+- hosts: localhost
+  tasks:
+    - name: CREATE virtualMachineScaleSets
+      azure_rm_resource:
+        api_version: '2018-10-01'
+        resource_group: 'sampleRG'
+        provider: 'Compute'
+        resource_type: 'virtualMachineScaleSets'
+        resource_name: '{{ name }}'
+        body:
+          id: (String)
+          name: (String)
+          type: (String)
+          location: (String)
+          tags:
+          sku:
+            name: (String)
+            tier: (String)
+            capacity: (Integer)
+          plan:
+            name: (String)
+            publisher: (String)
+            product: (String)
+            promotionCode: (String)
+          properties:
+            upgradePolicy:
+              mode: (String)
+              rollingUpgradePolicy:
+                maxBatchInstancePercent: (Integer)
+                maxUnhealthyInstancePercent: (Integer)
+                maxUnhealthyUpgradedInstancePercent: (Integer)
+                pauseTimeBetweenBatches: (String)
+              automaticOSUpgradePolicy:
+                enableAutomaticOSUpgrade: (Boolean)
+                disableAutomaticRollback: (Boolean)
+            virtualMachineProfile:
+              osProfile:
+                computerNamePrefix: (String)
+                adminUsername: (String)
+                adminPassword: (String)
+                customData: (String)
+                windowsConfiguration:
+                  provisionVMAgent:
+                  enableAutomaticUpdates:
+                  timeZone:
+                  additionalUnattendContent:
+                  winRM:
+                linuxConfiguration:
+                  disablePasswordAuthentication:
+                  ssh:
+                  provisionVMAgent:
+                secrets:
+              storageProfile:
+                imageReference:
+                  id:
+                  publisher:
+                  offer:
+                  sku:
+                  version:
+                osDisk:
+                  name:
+                  caching:
+                  writeAcceleratorEnabled:
+                  createOption:
+                  diffDiskSettings:
+                  diskSizeGB:
+                  osType:
+                  image:
+                  vhdContainers:
+                  managedDisk:
+                dataDisks:
+              additionalCapabilities:
+                ultraSSDEnabled: (Boolean)
+              networkProfile:
+                healthProbe:
+                  id:
+                networkInterfaceConfigurations:
+              diagnosticsProfile:
+                bootDiagnostics:
+                  enabled:
+                  storageUri:
+              extensionProfile:
+                extensions:
+              licenseType: (String)
+              priority: (String)
+              evictionPolicy: (String)
+            provisioningState: (String)
+            overprovision: (Boolean)
+            uniqueId: (String)
+            singlePlacementGroup: (Boolean)
+            zoneBalance: (Boolean)
+            platformFaultDomainCount: (Integer)
+          identity:
+            principalId: (String)
+            tenantId: (String)
+            type: (String)
+            userAssignedIdentities:
+          zones:
+            - (String)
+
+
